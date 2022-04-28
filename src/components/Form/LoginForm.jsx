@@ -10,15 +10,16 @@ const LoginForm = ({setLoginUser}) => {
         email:"",password:""
       })
       const navigate= useNavigate();
-      const loginpost=()=>{
-        const{fullname,name,email,phoneNumber,password,reEnterPassword} = user;
+      const loginpost=async()=>{
+        const{email,password} = user;
         if(email && password){
-          axios.post("http://localhost:9002/login",user).then(res=>{
+          await axios.post("http://localhost:9002/login",user).then(res=>{
             alert(res.data.message); 
+            navigate("/Homepage");
             setLoginUser(res.data.user);
-             navigate("/");
+             //navigate("/Homepage");
           })
-          setLoginUser(user);
+          //setLoginUser(user);
         }else{
           alert("Invalid Input");
         }
@@ -32,8 +33,9 @@ const LoginForm = ({setLoginUser}) => {
       }
      
   return (
-   <div className="container">
-       <div className="title">Registarion</div>
+      <div className="body">
+   <div className="container" >
+       <div className="title">Log In</div>
        <div className="form">
            <div className="user-details">
                {/* <div className="input-box">
@@ -81,12 +83,13 @@ const LoginForm = ({setLoginUser}) => {
                    </label>
                </div>
            </div> */}
-           <div className="button">
-               <input type="submit" value="Login"  onClick={()=>{navigate("/Register")}}/>
+           <div className="f-button">
+               <input type="submit" value="Login" onClick={loginpost} />
                {/* <div className='or'>Or</div> */}
-               <input type="submit" value="Register"onClick={loginpost} />
+               <input type="submit" value="Register" onClick={()=>{navigate("/Register")}} />
            </div>
        </div>
+   </div>
    </div>
   )
 }

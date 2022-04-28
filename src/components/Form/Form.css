@@ -1,24 +1,25 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
-*{
+ *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins',sans-serif;
 }
 
-body{
+.body{
     display:flex;
     height: 100vh;
     justify-content: center;
     align-items: center;
     padding:10px;
     background:linear-gradient(315deg, #f2cf07 0%, #55d284 74%);   
-    /* background: linear-gradient(135deg,#71b7e6,#9b59b6); */
+     /* background: linear-gradient(135deg,#71b7e6,#9b59b6);  */
 }
+ 
 
-.container{
+ .container{
     max-width:700px;
     width: 100%;
     background:#fff;
@@ -38,10 +39,10 @@ body{
     bottom: 0;
     height: 3px;
     width:30px;
-    background:linear-gradient(315deg, #f2cf07 0%, #55d284 74%);
+    background:linear-gradient(315deg, #f2cf07 0%, #55d284 74%); 
     
     /* background: linear-gradient(135deg,#71b7e6,#9b59b6); */
-}
+ }
 
 .container .form .user-details{
     display: flex;
@@ -109,7 +110,7 @@ body{
 #dot-3:checked ~ .category label .three{
     border-color:#d9d9d9;
     background: #f53803 ;
-    /* background: #9b59b6; */
+    
    
 }
 
@@ -117,37 +118,33 @@ body{
     display: none;
 }
 
-.form .button{
+.form .f-button{
     height:45px;
     margin: 45px 0;
 }
 
-.form .button input{
+.form .f-button input{
     height:100%;
     width: 100%;
-    /* padding: 15px; */
-    /* margin: 2px solid; */
+   
     margin-bottom: 20px;
     margin-left: 0px;
     border:5px  transparent;
     outline: none;
     color: #fff;
-    /* border:none; */
+   
     font-size: 18px;
     font-weight: 500;
     letter-spacing: 1px;
     background:linear-gradient(315deg, #f2cf07 0%, #55d284 74%);
-    /* background:linear-gradient(135deg,#71b7e6,#9b59b6); */
+   
 }
-.form .button input:hover{
+.form .f-button input:hover{
     background:linear-gradient(-315deg, #f2cf07 0%, #55d284 74%);
-    /* background:linear-gradient(-135deg,#71b7e6,#9b59b6) ; */
+    border-radius: 10px;
+    transition: all 0.3s ease;
 }
-/* form .button .or{
-    display: flex;
-    align-items: center;
-    text-align: center; 
-} */
+
 
 @media(max-width:584px){
     .container{
@@ -171,4 +168,7 @@ body{
     .user-details::-webkit-scrollbar{
         width: 0;
     }
-}
+} 
+
+
+ /* background:linear-gradient(-135deg,#71b7e6,#9b59b6) ; */

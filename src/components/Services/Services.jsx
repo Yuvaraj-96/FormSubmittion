@@ -22,7 +22,7 @@ const Services = () => {
            <span>services</span>
            <span>Lorem <br/>ispum</span>
            <a href={Resume} download>
-           <button className='button s-button'>Download CV</button>
+           <button className='button s-button p-button'>Download CV</button>
            </a>
           
            <div className="blur s-blur1" style={{background:'#ABF1FF94'}}></div>

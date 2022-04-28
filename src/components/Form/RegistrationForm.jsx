@@ -17,7 +17,7 @@ const RegistrationForm = () => {
         if(name && email && password && fullname&& phoneNumber&& password&&(password===reEnterPassword)){
           axios.post("http://localhost:9002/register",user).then(res=>{
             alert(res.data.message);
-            navigate("/login");
+            navigate("/");
           })
         }else{
           alert("Invalid Input");
@@ -29,16 +29,19 @@ const RegistrationForm = () => {
         const { name, value} = e.target;
         console.log(name);
         console.log(value);
-        // if(name=="gender"){
-        //     console.log(value)
-        // }
-        setUser({
-          ...user,[name]: value
-        })   
+        if(name==="email"){
+            setUser({...user,[name]: value.toLowerCase()}) 
+            
+        }else{
+            setUser({...user,[name]: value}) 
+
+        }
+          
     
       }
       const navigate= useNavigate();
   return (
+    <div className="body">
    <div className="container">
        <div className="title">Registarion</div>
        <div className="form">
@@ -88,12 +91,13 @@ const RegistrationForm = () => {
                    </label>
                </div>
            </div> */}
-           <div className="button">
+           <div className="f-button">
                <input type="submit" value="Register" onClick={registerpost}/>
                {/* <div className='or'>Or</div> */}
-               <input type="submit" value="Login" onClick={()=>{navigate("/login")}} />
+               <input type="submit" value="Login" onClick={()=>{navigate("/")}} />
            </div>
        </div>
+   </div>
    </div>
   )
 }

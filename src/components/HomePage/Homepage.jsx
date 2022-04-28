@@ -1,43 +1,41 @@
 import React from 'react'
 // import './App.css';
-// import Contactus from './components/Contactus/Contactus';
-// import Experience from './components/Experience/Experience';
-// import Footer from './components/Footer/Footer';
-// import Intro from './components/Intro/Intro';
- //import Navbar from './components/Navbar/Navbar';
- //import Navbar from 'src\components\Navbar\Navbar'
-// import Portfolio from './components/Portfolio/Portfolio';
-// import Services from './components/Services/Services';
-// import Testimonials from './components/Testimonials/Testimonials';
-// import Works from './components/Works/Works';
-// import Contactus from 'src/components/Contactus/Contactus'
-// import {themeContext} from './Context';
-// import {useContext} from 'react';
-import Card from '../Cards/Card'
+import Contactus from '../Contactus/Contactus';
+import Experience from '../Experience/Experience';
+import Footer from '../Footer/Footer';
+import Intro from '../Intro/Intro';
+import Navbar from '../Navbar/Navbar';
+import Portfolio from '../Portfolio/Portfolio';
+import Services from '../Services/Services';
+import Testimonials from '../Testimonials/Testimonials';
 import Works from '../Works/Works';
+// import Contactus from '../Contactus/Contactus'
+//import {themeContext} from './Context';
+import {useContext} from 'react';
+import {themeContext} from '../../Context';
+import './Homepage.css';
+// import Card from '../Cards/Card'
+// import Works from '../Works/Works';
 
 const Homepage = () => {
-  //   const theme = useContext(themeContext);
-  // const darkMode = theme.state.darkMode;
+  const theme = useContext(themeContext);
+  const darkMode = theme.state.darkMode;
   return (
-    <div className="App" 
+    <div className="Homepage"
     style={{
-      // background:darkMode?'black':'',
-      // color:darkMode?'white':'',
+      background:darkMode?'black':'',
+      color:darkMode?'white':'',
   }}
-
     >
-       {/* <Navbar/> */}
-       {/* <Intro/>
+      <Navbar/>
+       <Intro/>
        <Services/>
        <Experience/>
-       
+       <Works/>
        <Portfolio/>
        <Testimonials/>
        <Contactus/>
-       <Footer/> */}
-       <Works/>
-       <Card/>
+       <Footer/>
     </div>
   )
 }

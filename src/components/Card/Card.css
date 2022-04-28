@@ -12,6 +12,7 @@
     box-shadow: var(--boxShadow);
     border-radius: 20px;
     padding: 0px 26px 2rem 26px;
+    box-sizing: content-box !important;
 
 }
 

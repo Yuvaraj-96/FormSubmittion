@@ -7,23 +7,29 @@ import { useState } from 'react';
 import RegistrationForm from './components/Form/RegistrationForm';
 import LoginForm from './components/Form/LoginForm';
 import Homepage from './components/HomePage/Homepage';
+import Portfolioform from './components/Portfolioform/Portfolioform';
+// import {useContext} from 'react';
+// import {themeContext} from './Context'
 
 
 function App() {
    const [user, setLoginUser] = useState()
    console.log(user)
- 
+  //  const theme = useContext(themeContext);
+  //  const darkMode = theme.state.darkMode;
   
   return (
-    <div className="App">
+    <div className="App1">
 
       
         <BrowserRouter>
       <Routes>       
-      { user && user._id?<Route path="/" element={<Homepage />}  />:<Route path="/" element={<LoginForm  setLoginUser={setLoginUser}/>} />}
+      { user && user._id?<Route path="/Homepage" element={<Homepage />}  />:<Route path="/" element={<LoginForm  setLoginUser={setLoginUser}/>} />}
+      <Route path="/Homepage" element={<Homepage />}  />
         {/* <Route path="/" element={<Home />}  /> */}
-        <Route path="/login" element={<LoginForm />} />
-        <Route path="/" element={<RegistrationForm />} />
+        <Route path="/" element={<LoginForm />} />
+        <Route path="/Register" element={<RegistrationForm />} />
+        <Route path="/Portfolioform" element={<Portfolioform />} />
         {/* <Route path="/registration" element={<Register />} /> */}
       </Routes>
     </BrowserRouter> 
