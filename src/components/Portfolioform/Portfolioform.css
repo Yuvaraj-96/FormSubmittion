@@ -124,6 +124,21 @@
     cursor: pointer;
 }
 
+.wrapper .from .input_field .check input[type='checkbox']{
+    
+    position: absolute;
+    top:0;
+    left:0;
+    opacity: 0;
+}
+
+.wrapper .from .input_field .check .checkmark{
+    
+    width: 15px;
+    height: 15px;
+    border: 1px solid #fec107;
+}
+
 /* .wrapper .form .input_field .custom_select select *:focus{
     border:1px solid #fec107;
     font-size: 15px !important;
