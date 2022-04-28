@@ -42,7 +42,7 @@ const Portfolioform = () => {
                     <input type="checkbox"  />
                     <span className="checkmark"></span>
                 </label>
-                <p>Agree to submit my details and permit to store the my date into this site.</p>                
+                <p>Agree to submit my details and permit to store my date into this site.</p>                
             </div>
             <div className="inputfield">
                 <input type="submit" value="Register"  className="btn"/>
