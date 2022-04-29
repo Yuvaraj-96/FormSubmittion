@@ -1,27 +1,141 @@
-import React from 'react';
+import React ,{useState}  from 'react';
 import './Portfolioform.css';
+import axios from 'axios';
+import {useNavigate} from 'react-router-dom';
+
 
 const Portfolioform = () => {
+ 
+    const[details, setDetails] = useState({
+        name:"",fullname:"",jobdescription:"",area1:"",area2:"",service:"",serviceareatitle1:"",
+        serviceareadesc1:"",serviceareatitle2:"",serviceareatitle2:"",serviceareadesc3:"",
+        serviceareadesc3:"",gitlink:"",cvlink:"",yearexperiance:"",projectcomplited:"",companies:""
+    })
+    const navigate= useNavigate();
+
+    const submitdetails=()=>{
+       
+        axios.post(`http://localhost:9002/username/${ details.name}`,details).then(res=>{
+            alert(res.data.message);
+            navigate("/");
+          })
+
+    }
+
+    const handelChange=e=>{
+       const{name,value}= e.target;
+       console.log(`Name : ${name} and Value : ${value}`)
+    //    const { name, value} = e.target;
+
+       setDetails({...details,[name]: value.toLowerCase()})
+
+       //console.log(...details);
+
+    }
+    // const PortfolioSchema = new mongoose.Schema({
+    //     name:String,
+    //     fullname:String,
+    //     jobdescription:String,
+    //     area1:String,
+    //     area2:String,
+    //     gitlink:String,
+    //     services:{
+    //         service:String,
+    //         servicearea:{
+    //             serviceareatitle1:String,
+    //             serviceareadesc1:String,
+    //             serviceareatitle2:String,
+    //             serviceareadesc2:String,
+    //             serviceareatitle3:String,
+    //             serviceareadesc3:String
+    //         }
+    //     },
+    //     cvlink:String,
+    //     yearexperiance:String,
+    //     projectcomplited:String,
+    //     companies:String,
+    // });
+
+
+
+
+
   return (
       <div className="body">
     <div className="wrapper">
         <div className="title">Registration Form</div>
         <div className="form">
             <div className="input_field">
-                <label htmlFor="">First Name</label>
-                <input type="text" className="pd-input" name="" id="" />
+                <label htmlFor="">User Name</label>
+                <input type="text" className="pd-input" name="name" id="" onChange={handelChange} />
             </div>
             <div className="input_field">
-                <label htmlFor="">Last Name</label>
-                <input type="text" className="pd-input" name="" id="" />
+                <label htmlFor="">Full Name</label>
+                <input type="text" className="pd-input" name="fullname" id="" onChange={handelChange} />
             </div>
             <div className="input_field">
-                <label htmlFor="">First Name</label>
-                <input type="text" className="pd-input" name="" id="" />
+                <label htmlFor="">Job description</label>
+                <textarea name="jobdescription" cols="30" rows="10" className="textarea" onChange={handelChange}></textarea>               
             </div>
             <div className="input_field">
-                <label htmlFor="">First Name</label>
-                <input type="text" className="pd-input" name="" id="" />
+                <label htmlFor="">Field of expertise 1</label>
+                <input type="text" className="pd-input" name="area1" id="" onChange={handelChange}/>
+            </div>           
+            <div className="input_field">
+                <label htmlFor="">Field of expertise 2</label>
+                <input type="text" className="pd-input" name="area2" id=""onChange={handelChange} />
+            </div>
+            <div className="input_field">
+                <label htmlFor="">Service you will provide </label>
+                <textarea name="service" cols="30" rows="10" className="textarea" onChange={handelChange}></textarea>               
+            </div>
+            <div className="input_field">
+                <label htmlFor="">Area of Service 1 </label>
+                <input type="text" className="pd-input" name="serviceareatitle1" id="" onChange={handelChange}/>
+            </div>
+            <div className="input_field">
+                <label htmlFor="">Technologies  used</label>
+                <input type="text" className="pd-input" name="serviceareadesc1" id="" onChange={handelChange}/>
+            </div>
+            <div className="input_field">
+                <label htmlFor="">Area of Service 2 </label>
+                <input type="text" className="pd-input" name="serviceareatitle2" id="" onChange={handelChange}/>
+            </div>
+            <div className="input_field">
+                <label htmlFor="">Technologies  used</label>
+                <input type="text" className="pd-input" name="serviceareadesc2" id="" onChange={handelChange}/>
+            </div>
+            <div className="input_field">
+                <label htmlFor="">Area of Service 3 </label>
+                <input type="text" className="pd-input" name="serviceareatitle3" id="" onChange={handelChange}/>
+            </div>
+            <div className="input_field">
+                <label htmlFor="">Technologies  used</label>
+                <input type="text" className="pd-input" name="serviceareadesc3" id="" onChange={handelChange}/>
+            </div>
+            <div className="input_field">
+                <label htmlFor="">CV Link</label>
+                <input type="text" className="pd-input" name="cvlink" id="" onChange={handelChange}/>
+            </div>
+            <div className="input_field">
+                <label htmlFor="">GIT Link</label>
+                <input type="text" className="pd-input" name="gitlink" id="" onChange={handelChange}/>
+            </div>
+            <div className="input_field">
+                <label htmlFor="">Year of Experience</label>
+                <input type="text" className="pd-input" name="yearexperiance" id="" onChange={handelChange}/>
+            </div>
+            <div className="input_field">
+                <label htmlFor="">Project completed </label>
+                <input type="text" className="pd-input" name="projectcomplited" id="" onChange={handelChange}/>
+            </div>
+            <div className="input_field">
+                <label htmlFor="">Previously worked Companies </label>
+                <input type="text" className="pd-input" name="companies" id="" onChange={handelChange}/>
+            </div>
+            <div className="input_field">
+                <label htmlFor="">Portfolio Link </label>
+                <input type="text" className="pd-input" name="" id="" onChange={handelChange}/>
             </div>
             <div className="input_field">
                 <label htmlFor="">Gender</label>
@@ -33,10 +147,10 @@ const Portfolioform = () => {
                     </select>
                 </div>               
             </div>
-            <div className="input_field">
+            {/* <div className="input_field">
                 <label htmlFor="">Address</label>
                 <textarea name="" cols="30" rows="10" className="textarea"></textarea>               
-            </div>
+            </div> */}
             <div className="input_field terms">
                 <label  className='check'>
                     <input type="checkbox"  />
@@ -45,7 +159,7 @@ const Portfolioform = () => {
                 <p>Agree to submit my details and permit to store my date into this site.</p>                
             </div>
             <div className="inputfield">
-                <input type="submit" value="Register"  className="btn"/>
+                <input type="submit" value="Register"  className="btn" onClick={submitdetails}/>
             </div>
         </div>
     </div>
