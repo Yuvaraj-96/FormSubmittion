@@ -16,7 +16,7 @@ const LoginForm = ({setLoginUser}) => {
           await axios.post("http://localhost:9002/login",user).then(res=>{
             alert(res.data.message); 
             navigate("/Homepage");
-            setLoginUser(res.data.user);
+            setLoginUser(res.data.user.name);
              //navigate("/Homepage");
           })
           //setLoginUser(user);
@@ -33,7 +33,7 @@ const LoginForm = ({setLoginUser}) => {
       }
      
   return (
-      <div className="body">
+      <div className="body1">
    <div className="container" >
        <div className="title">Log In</div>
        <div className="form">

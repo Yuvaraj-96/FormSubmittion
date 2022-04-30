@@ -20,12 +20,12 @@ function App() {
   
   return (
     <div className="App1">
-
+{/* element={<LoginForm  setLoginUser={setLoginUser}/>} */}
       
         <BrowserRouter>
       <Routes>       
-      { user && user._id?<Route path="/Homepage" element={<Homepage />}  />:<Route path="/" element={<LoginForm  setLoginUser={setLoginUser}/>} />}
-      <Route path="/Homepage" element={<Homepage />}  />
+      { user && user._id?<Route path="/Homepage" element={<Homepage />}  />:<Route path="/"  element={<LoginForm setLoginUser={setLoginUser} />}  />}
+      <Route path="/Homepage" element={<Homepage user={user} />}  />
         {/* <Route path="/" element={<Home />}  /> */}
         <Route path="/" element={<LoginForm />} />
         <Route path="/Register" element={<RegistrationForm />} />

@@ -41,7 +41,7 @@ const RegistrationForm = () => {
       }
       const navigate= useNavigate();
   return (
-    <div className="body">
+    <div className="body1">
    <div className="container">
        <div className="title">Registarion</div>
        <div className="form">
