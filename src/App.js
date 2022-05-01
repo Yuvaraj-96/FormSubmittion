@@ -13,7 +13,12 @@ import Portfolioform from './components/Portfolioform/Portfolioform';
 
 
 function App() {
-   const [user, setLoginUser] = useState()
+   const [user, setLoginUser] = useState("");
+   const[cvdetails, setCvetails] = useState({
+    name:"",fullname:"",jobdescription:"",area1:"",area2:"",service:"",serviceareatitle1:"",
+    serviceareadesc1:"",serviceareatitle2:"",serviceareadesc2:"",serviceareatitle3:"",
+    serviceareadesc3:"",gitlink:"",cvlink:"",yearexperiance:"",projectcomplited:"",companies:""
+})
    console.log(user)
   //  const theme = useContext(themeContext);
   //  const darkMode = theme.state.darkMode;
@@ -24,12 +29,12 @@ function App() {
       
         <BrowserRouter>
       <Routes>       
-      { user && user._id?<Route path="/Homepage" element={<Homepage />}  />:<Route path="/"  element={<LoginForm setLoginUser={setLoginUser} />}  />}
-      <Route path="/Homepage" element={<Homepage user={user} />}  />
+      { user && user._id?<Route path="user/:userID" element={<Homepage user={user}  cvdetails={cvdetails}  />}  />:<Route path="/"  element={<LoginForm setLoginUser={setLoginUser} />}  />}
+      <Route path="user/:userID" element={<Homepage user={user}  cvdetails={cvdetails} />}  />
         {/* <Route path="/" element={<Home />}  /> */}
         <Route path="/" element={<LoginForm />} />
-        <Route path="/Register" element={<RegistrationForm />} />
-        <Route path="/Portfolioform" element={<Portfolioform />} />
+        <Route path="Register" element={<RegistrationForm />} />
+        <Route path="Portfolioform" element={<Portfolioform  setCvetails={setCvetails} />} />
         {/* <Route path="/registration" element={<Register />} /> */}
       </Routes>
     </BrowserRouter> 

@@ -15,7 +15,7 @@ const LoginForm = ({setLoginUser}) => {
         if(email && password){
           await axios.post("http://localhost:9002/login",user).then(res=>{
             alert(res.data.message); 
-            navigate("/Homepage");
+            navigate(`/user/${res.data.user.name}`);
             setLoginUser(res.data.user.name);
              //navigate("/Homepage");
           })

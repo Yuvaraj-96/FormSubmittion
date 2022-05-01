@@ -3,11 +3,11 @@ import Toggle from '../Toggle/Toggle';
 import './Navbar.css';
 import {Link} from 'react-scroll';
 
-const  Navbar=()=> {
+const  Navbar=({portfoliodata})=> {
   return (
    <div className="n-wrapper" id='Navbar'>
        <div className='n-left'>
-       <div className="n-name">Yuvaraj</div>
+       <div className="n-name">{portfoliodata.name?portfoliodata.name:"Yuvaraj Poobalan"}</div>
        <Toggle/>
        </div>
        

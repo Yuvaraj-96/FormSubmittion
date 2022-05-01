@@ -15,7 +15,7 @@ import { useContext } from 'react';
 import { themeContext } from '../../Context';
 import { motion } from 'framer-motion';
 
-const Intro = () => {
+const Intro = ({portfoliodata}) => {
     const transition = {duration:2, type:'spring'}
   const theme = useContext(themeContext);
   const darkMode = theme.state.darkMode;
@@ -24,16 +24,14 @@ const Intro = () => {
         <div className="i-left">
             <div className="i-name">
                 <span style={{color:darkMode?'white':''}}>Hy! I Am</span>
-                <span>Yuvaraj Poobalan</span>
-                <span>Frontend Developer with
-                 high level of experience in web designing
-                 and development, producting the quality work</span>
+                <span>{portfoliodata.fullname?portfoliodata.fullname:"Yuvaraj Poobalan"}</span>
+                <span>{portfoliodata.jobdescription?portfoliodata.jobdescription:"Frontend Developer with high level of experience in web designing and development, producting the quality work"}</span>
             </div>
             <button className="button i-button">Hire Me</button>
             <div className="i-icons">
-            <a href='https://github.com/Yuvaraj-96' target="_blank" rel="noreferrer"> <img src={Github} alt=''></img></a>
+            <a href={portfoliodata.gitlink?portfoliodata.gitlink:"https://github.com/Yuvaraj-96"} target="_blank" rel="noreferrer"> <img src={Github} alt=''></img></a>
                 <img src={Instagram} alt=''></img>
-                <a href='https://www.linkedin.com/in/yuvaraj-poobalan-796769145/' target="_blank" rel="noreferrer"> <img src={Linkedin} alt=''></img></a>
+                <a href={portfoliodata.linkedinlink?portfoliodata.linkedinlink:"https://www.linkedin.com/in/yuvaraj-poobalan-796769145/"} target="_blank" rel="noreferrer"> <img src={Linkedin} alt=''></img></a>
             </div>
         </div>
         <div className="i-right">        
@@ -52,7 +50,7 @@ const Intro = () => {
                 style={{top:'-4%', left:'68%'}}
                 className='floating-div'
                 >
-                    <FloatingDiv image={crown} txt1='web' txt2='Developer'></FloatingDiv>
+                    <FloatingDiv image={crown} portfoliodataarea={portfoliodata.area1}></FloatingDiv>
                 </motion.div>
                 <motion.div
                 initial={{top:'18rem',left:'9rem'}}
@@ -61,7 +59,7 @@ const Intro = () => {
                 style={{top:'18rem', left:'2rem'}}
                 className='floating-div'
                 >
-                    <FloatingDiv image={thumbup} txt1='Best Design' txt2='Award'></FloatingDiv>
+                    <FloatingDiv image={thumbup} portfoliodataarea={portfoliodata.area2}></FloatingDiv>
                 </motion.div>
                 <div className='blur' style={{background:'rgb(238 210 255)'}}></div>
                 <div className='blur' style={{background:'#c1f5ff', top:'17rem',width:'21rem', height:'11rem',left:'-9rem'}}></div>

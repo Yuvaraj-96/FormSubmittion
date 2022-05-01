@@ -4,20 +4,24 @@ import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
 
 
-const Portfolioform = () => {
+const Portfolioform = ({setCvetails}) => {
  
     const[details, setDetails] = useState({
         name:"",fullname:"",jobdescription:"",area1:"",area2:"",service:"",serviceareatitle1:"",
-        serviceareadesc1:"",serviceareatitle2:"",serviceareatitle2:"",serviceareadesc3:"",
+        serviceareadesc1:"",serviceareatitle2:"",serviceareadesc2:"",serviceareatitle3:"",
         serviceareadesc3:"",gitlink:"",cvlink:"",yearexperiance:"",projectcomplited:"",companies:""
     })
     const navigate= useNavigate();
 
-    const submitdetails=()=>{
+    const submitdetails=e=>{
+        e.preventDefault();
+
+        setCvetails({...details});
        
-        axios.post(`http://localhost:9002/username/${ details.name}`,details).then(res=>{
+        axios.post(`http://localhost:9002/setuserdata`,details).then(res=>{
             alert(res.data.message);
-            navigate("/");
+            navigate(`/user/${details.name}`);
+           // navigate(`/user/${details.name}`);
           })
 
     }
@@ -168,3 +172,11 @@ const Portfolioform = () => {
 }
 
 export default Portfolioform
+
+
+
+// wenElement source=driver.findElement(By.name("q"));
+// source.click();
+//   Actions actionProvider = new Actions(driver);
+//   Action keydown = actionProvider.keyDown(Keys.CONTROL).build();
+//   keydown.perform();
