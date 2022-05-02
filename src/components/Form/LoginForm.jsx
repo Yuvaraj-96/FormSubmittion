@@ -4,8 +4,8 @@ import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
 
 
-
-const LoginForm = ({setLoginUser}) => {
+//setUrl={setUrl} setLogined={setLogined} setLoginUser={setLoginUser}
+const LoginForm = ({setUrl,setLogined,setLoginUser}) => {
     const [user, setUser] = useState({
         email:"",password:""
       })
@@ -15,7 +15,8 @@ const LoginForm = ({setLoginUser}) => {
         if(email && password){
           await axios.post("http://localhost:9002/login",user).then(res=>{
             alert(res.data.message); 
-            navigate(`/user/${res.data.user.name}`);
+            navigate(`/user/${setUrl}`);
+            setLogined(true);
             setLoginUser(res.data.user.name);
              //navigate("/Homepage");
           })

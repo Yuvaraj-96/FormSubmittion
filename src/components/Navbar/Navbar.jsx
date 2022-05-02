@@ -2,12 +2,19 @@ import React from 'react';
 import Toggle from '../Toggle/Toggle';
 import './Navbar.css';
 import {Link} from 'react-scroll';
+import {useNavigate} from 'react-router-dom';
 
 const  Navbar=({portfoliodata})=> {
+    const navigate= useNavigate();
+    const registerroute=e=>{
+        e.preventDefault();
+        navigate(`/Portfolioform`);
+
+    }
   return (
    <div className="n-wrapper" id='Navbar'>
        <div className='n-left'>
-       <div className="n-name">{portfoliodata.name?portfoliodata.name:"Yuvaraj Poobalan"}</div>
+       <div className="n-name">{portfoliodata.username?portfoliodata.username:"Yuvaraj Poobalan"}</div>
        <Toggle/>
        </div>
        
@@ -32,11 +39,11 @@ const  Navbar=({portfoliodata})=> {
                    
                </ul>
            </div>
-           <button className="button n-button">Contact</button>
+           <button className="button n-button" onClick={registerroute} >Get Own CV</button>
        </div>
 
    </div>
    
   )};
-
+//   onClick={()=>registerroute}
 export default Navbar

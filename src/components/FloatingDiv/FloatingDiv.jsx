@@ -17,4 +17,6 @@ const FloatingDiv = ({image,portfoliodataarea}) => {
   )
 }
 
-export default FloatingDiv
+export default FloatingDiv;
+
+//mongoose.connect('mongodb+srv://Yuvaraj:Admin123@cluster0.lpdgs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',{useNewUrlParser:true,useUnifiedTopology:true},()=>{console.log('DB Connected')});

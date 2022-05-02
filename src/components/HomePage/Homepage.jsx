@@ -20,22 +20,30 @@ import axios from 'axios';
 
 
 
-const Homepage = ({user},{cvdetails}) => {
+const Homepage = ({cvdetails}) => {
 
-  const [portfoliodata, setPortfoliodata] = useState({name:"",fullname:"",jobdescription:"",area1:"",area2:"",service:"",serviceareatitle1:"",
+  const pathname = window.location.pathname 
+  pathname.slice("/");
+  // console.log("pathname : "+pathname);
+  // console.log("pathname.slice(/); : "+pathname.split("/"));
+  const arryvalue=pathname.split("/");
+
+  let username;
+  username=arryvalue[2]||cvdetails.username
+  console.log("arryvalue[1]  : "+arryvalue[2]);
+  console.log("username[1]  : "+username);
+
+  const [portfoliodata, setPortfoliodata] = useState({username:"",fullname:"",jobdescription:"",area1:"",area2:"",service:"",serviceareatitle1:"",
   serviceareadesc1:"",serviceareatitle2:"",serviceareadesc2:"",serviceareatitle3:"",
-  serviceareadesc3:"",gitlink:"",cvlink:"",yearexperiance:"",projectcomplited:"",companies:""})
+  serviceareadesc3:"",gitlink:"",cvlink:"",linkedinlink:"",instalink:"",yearexperiance:"",projectcomplited:"",companies:"",permition:false})
 
 
-  let name=user;
-  name='yuvaraj'
+  
 
-  //console.log("Data got from Login component: " +name.name);
-  //console.log("Data got from Login component: " +user.name);
-  //console.log("Data got from Login component:cvdetails: " +cvdetails.fullname);
 
   useEffect(() => {
-    axios.post("http://localhost:9002/getuserdatas",{username:name}).then(res=>{
+//const loaddata=()=>{
+    axios.post("http://localhost:9002/getuserdatas",{username:username}).then(res=>{
       console.log('page is fully loaded');
        console.log(res.data);
         if(res.data.message){
@@ -51,26 +59,17 @@ const Homepage = ({user},{cvdetails}) => {
           // console.log("Portfoliodatauser setPortfoliodata : "+name,fullname,jobdescription,area1,area2,service,serviceareatitle1,
           // serviceareadesc1,serviceareatitle2,serviceareadesc2,serviceareatitle3,
           // serviceareadesc3,gitlink,cvlink,yearexperiance,projectcomplited,companies);
-
-          
-          // const{name,fullname,jobdescription,area1,area2,service,serviceareatitle1,
-          // serviceareadesc1,serviceareatitle2,serviceareadesc2,serviceareatitle3,
-          // serviceareadesc3,gitlink,cvlink,yearexperiance,projectcomplited,companies} = res.data.Portfoliodatauser;
-
-          // console.log("Portfoliodatauser setPortfoliodata : "+name,fullname,jobdescription,area1,area2,service,serviceareatitle1,
-          // serviceareadesc1,serviceareatitle2,serviceareadesc2,serviceareatitle3,
-          // serviceareadesc3,gitlink,cvlink,yearexperiance,projectcomplited,companies);
-          //res.data.
   
         }
-        
-       
       })
-      //console.log("Data got from Login component:cvdetails: " +cvdetails.fullname);
-  },[]);
+    // }
+
+    //   loaddata();
+
+  },[username]);
 
 
-  console.log("portfoliodata : "+ portfoliodata.name)
+  console.log("portfoliodata : "+ portfoliodata.username)
   console.log("portfoliodata jobdescription : "+ portfoliodata.jobdescription)
   console.log("portfoliodata area1 : "+ portfoliodata.area1)
   console.log("portfoliodata area2 : "+ portfoliodata.area2)

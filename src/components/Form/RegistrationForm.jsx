@@ -5,7 +5,7 @@ import {useNavigate} from 'react-router-dom';
 
 
 
-const RegistrationForm = () => {
+const RegistrationForm = ({setUrl,setLogined,setLoginUser}) => {
     const [user, setUser] = useState({
         fullname:"", name:"",email:"",phoneNumber:"",password:"",reEnterPassword:""
       });
@@ -17,7 +17,13 @@ const RegistrationForm = () => {
         if(name && email && password && fullname&& phoneNumber&& password&&(password===reEnterPassword)){
           axios.post("http://localhost:9002/register",user).then(res=>{
             alert(res.data.message);
-            navigate("/");
+            setLogined(true);
+            if(setUrl){
+                navigate(`${setUrl}`);
+            }else{
+                
+            }
+            
           })
         }else{
           alert("Invalid Input");

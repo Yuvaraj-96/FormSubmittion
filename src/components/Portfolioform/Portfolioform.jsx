@@ -7,22 +7,31 @@ import {useNavigate} from 'react-router-dom';
 const Portfolioform = ({setCvetails}) => {
  
     const[details, setDetails] = useState({
-        name:"",fullname:"",jobdescription:"",area1:"",area2:"",service:"",serviceareatitle1:"",
+        username:"",fullname:"",jobdescription:"",area1:"",area2:"",service:"",serviceareatitle1:"",
         serviceareadesc1:"",serviceareatitle2:"",serviceareadesc2:"",serviceareatitle3:"",
-        serviceareadesc3:"",gitlink:"",cvlink:"",yearexperiance:"",projectcomplited:"",companies:""
+        serviceareadesc3:"",gitlink:"",cvlink:"",linkedinlink:"",instalink:"",yearexperiance:"",projectcomplited:"",companies:"", permition:false
     })
     const navigate= useNavigate();
 
     const submitdetails=e=>{
         e.preventDefault();
 
-        setCvetails({...details});
+        if(!(details.username && details.fullname && details.permition)){
+
+            setCvetails({...details});
        
-        axios.post(`http://localhost:9002/setuserdata`,details).then(res=>{
-            alert(res.data.message);
-            navigate(`/user/${details.name}`);
-           // navigate(`/user/${details.name}`);
-          })
+            axios.post(`http://localhost:9002/setuserdata`,details).then(res=>{
+                alert(res.data.message);
+                navigate(`/user/${details.username}`);
+               // navigate(`/user/${details.name}`);
+              })             
+
+        }else{
+
+            alert("Kindly Enter The Reqired Field to Proceed Further");           
+          
+        }
+        // return false
 
     }
 
@@ -30,8 +39,13 @@ const Portfolioform = ({setCvetails}) => {
        const{name,value}= e.target;
        console.log(`Name : ${name} and Value : ${value}`)
     //    const { name, value} = e.target;
+    if(name==='permition')
+    {
+       console.log("permition : " +e.currentTarget.checked) ;
+       setDetails({...details,[name]: e.currentTarget.checked})
+    }
 
-       setDetails({...details,[name]: value.toLowerCase()})
+       setDetails({...details,[name]: value})
 
        //console.log(...details);
 
@@ -65,81 +79,92 @@ const Portfolioform = ({setCvetails}) => {
 
 
   return (
+    // <form action="#">
       <div className="body">
-    <div className="wrapper">
+      <div className="wrapper">
         <div className="title">Registration Form</div>
+        
         <div className="form">
+        {/* <form action="#"> */}
             <div className="input_field">
                 <label htmlFor="">User Name</label>
-                <input type="text" className="pd-input" name="name" id="" onChange={handelChange} />
+                <input name="username" type="text" className="pd-input" placeholder="User Name" required onChange={handelChange}  />
             </div>
             <div className="input_field">
                 <label htmlFor="">Full Name</label>
-                <input type="text" className="pd-input" name="fullname" id="" onChange={handelChange} />
+                <input name="fullname"type="text" className="pd-input" placeholder="Full Name"  required onChange={handelChange} />
             </div>
             <div className="input_field">
                 <label htmlFor="">Job description</label>
-                <textarea name="jobdescription" cols="30" rows="10" className="textarea" onChange={handelChange}></textarea>               
+                <textarea name="jobdescription" cols="30" rows="10" placeholder=' Like I am working as a frontend web developer' className="textarea" onChange={handelChange}></textarea>               
             </div>
             <div className="input_field">
                 <label htmlFor="">Field of expertise 1</label>
-                <input type="text" className="pd-input" name="area1" id="" onChange={handelChange}/>
+                <input type="text" className="pd-input" name="area1" placeholder=" Like Web development" id="" onChange={handelChange}/>
             </div>           
             <div className="input_field">
                 <label htmlFor="">Field of expertise 2</label>
-                <input type="text" className="pd-input" name="area2" id=""onChange={handelChange} />
+                <input type="text" className="pd-input" name="area2" placeholder="Like web desgin" id=""onChange={handelChange} />
             </div>
             <div className="input_field">
                 <label htmlFor="">Service you will provide </label>
-                <textarea name="service" cols="30" rows="10" className="textarea" onChange={handelChange}></textarea>               
+                <textarea name="service" cols="30" rows="10" className="textarea" placeholder=" Like i will provide services like creating Web application " onChange={handelChange}></textarea>               
             </div>
             <div className="input_field">
                 <label htmlFor="">Area of Service 1 </label>
-                <input type="text" className="pd-input" name="serviceareatitle1" id="" onChange={handelChange}/>
+                <input type="text" className="pd-input" name="serviceareatitle1" placeholder="Like Frontend development" id="" onChange={handelChange}/>
             </div>
             <div className="input_field">
                 <label htmlFor="">Technologies  used</label>
-                <input type="text" className="pd-input" name="serviceareadesc1" id="" onChange={handelChange}/>
+                <input type="text" className="pd-input" name="serviceareadesc1" placeholder="HTML, CSS, ES6" id="" onChange={handelChange}/>
             </div>
             <div className="input_field">
                 <label htmlFor="">Area of Service 2 </label>
-                <input type="text" className="pd-input" name="serviceareatitle2" id="" onChange={handelChange}/>
+                <input type="text" className="pd-input" name="serviceareatitle2" placeholder="Selenium Automation" id="" onChange={handelChange}/>
             </div>
             <div className="input_field">
                 <label htmlFor="">Technologies  used</label>
-                <input type="text" className="pd-input" name="serviceareadesc2" id="" onChange={handelChange}/>
+                <input type="text" className="pd-input" name="serviceareadesc2" placeholder="Java, testNG, Maven" id="" onChange={handelChange}/>
             </div>
             <div className="input_field">
                 <label htmlFor="">Area of Service 3 </label>
-                <input type="text" className="pd-input" name="serviceareatitle3" id="" onChange={handelChange}/>
+                <input type="text" className="pd-input" name="serviceareatitle3" placeholder="DB" id="" onChange={handelChange}/>
             </div>
             <div className="input_field">
                 <label htmlFor="">Technologies  used</label>
-                <input type="text" className="pd-input" name="serviceareadesc3" id="" onChange={handelChange}/>
+                <input type="text" className="pd-input" name="serviceareadesc3" placeholder="mongodb" id="" onChange={handelChange}/>
             </div>
             <div className="input_field">
                 <label htmlFor="">CV Link</label>
-                <input type="text" className="pd-input" name="cvlink" id="" onChange={handelChange}/>
+                <input type="text" className="pd-input" name="cvlink" id="" placeholder="Resume Link" onChange={handelChange}/>
             </div>
             <div className="input_field">
                 <label htmlFor="">GIT Link</label>
-                <input type="text" className="pd-input" name="gitlink" id="" onChange={handelChange}/>
+                <input type="text" className="pd-input" name="gitlink" id="" placeholder="GIT Link" onChange={handelChange}/>
+            </div>
+            <div className="input_field">
+                <label htmlFor="">Instagram Link</label>
+                <input type="text" className="pd-input" name="instalink" id="" placeholder="Instagram Profile Link" onChange={handelChange}/>
+            </div>
+            <div className="input_field">
+                <label htmlFor="">LinkedIn Link</label>
+                <input type="text" className="pd-input" name="linkedinlink" id="" placeholder="LinkedIn Profile Link" onChange={handelChange}/>
             </div>
             <div className="input_field">
                 <label htmlFor="">Year of Experience</label>
-                <input type="text" className="pd-input" name="yearexperiance" id="" onChange={handelChange}/>
+                <input type="text" className="pd-input" name="yearexperiance" id="" placeholder="Year of Experience" onChange={handelChange}/>
             </div>
             <div className="input_field">
                 <label htmlFor="">Project completed </label>
-                <input type="text" className="pd-input" name="projectcomplited" id="" onChange={handelChange}/>
+                <input type="text" className="pd-input" name="projectcomplited" id="" placeholder="Project completed" onChange={handelChange}/>
             </div>
             <div className="input_field">
                 <label htmlFor="">Previously worked Companies </label>
-                <input type="text" className="pd-input" name="companies" id="" onChange={handelChange}/>
+                <input type="text" className="pd-input" name="companies" id="" placeholder="Previously worked Companies" onChange={handelChange}/>
             </div>
             <div className="input_field">
                 <label htmlFor="">Portfolio Link </label>
-                <input type="text" className="pd-input" name="" id="" onChange={handelChange}/>
+                <input type="text" className="pd-input" name="" id="" placeholder="Portfolio Link" onChange={handelChange}/>
             </div>
             <div className="input_field">
                 <label htmlFor="">Gender</label>
@@ -150,11 +175,7 @@ const Portfolioform = ({setCvetails}) => {
                         <option value="female">Female</option>
                     </select>
                 </div>               
-            </div>
-            {/* <div className="input_field">
-                <label htmlFor="">Address</label>
-                <textarea name="" cols="30" rows="10" className="textarea"></textarea>               
-            </div> */}
+            </div>           
             <div className="input_field terms">
                 <label  className='check'>
                     <input type="checkbox"  />
@@ -168,15 +189,11 @@ const Portfolioform = ({setCvetails}) => {
         </div>
     </div>
     </div>
+           
+    
   )
 }
 
 export default Portfolioform
 
 
-
-// wenElement source=driver.findElement(By.name("q"));
-// source.click();
-//   Actions actionProvider = new Actions(driver);
-//   Action keydown = actionProvider.keyDown(Keys.CONTROL).build();
-//   keydown.perform();
