@@ -41,7 +41,7 @@ function App() {
     console.log("localStorage.getItem('cvurl') : "+localStorage.getItem('cvurl'));
   }else{
     console.log(" Include is not working");
-    localStorage.removeItem('myData');
+    //localStorage.removeItem('myData');
 
   }
 

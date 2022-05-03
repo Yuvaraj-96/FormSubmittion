@@ -30,14 +30,15 @@ const LoginForm = ({url,setLogined,setLoginUser}) => {
            // alert(res.data.message); 
 
            if(res.data.message.includes("User not register already")||res.data.message.includes("Password is incorrect")) {
-            alert(res.data.message);            
+            alert(res.data.message+". Kindly register yourself to view the resume."); 
+            navigate(`/Register`);           
            }else{
             alert(res.data.message); 
             localStorage.setItem('logined',true);
             setLogined(true);
             setLoginUser(res.data.user.name);
-            if(url){
-            navigate(`${url}`);
+            if(url||localStorage.getItem('cvurl')){
+            navigate(`${localStorage.getItem('cvurl')}`);
             }else{
                 console.log(" write code for the sample CV ");
                 // write code for the sample CV

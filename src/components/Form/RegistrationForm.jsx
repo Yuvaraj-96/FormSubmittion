@@ -19,11 +19,11 @@ const RegistrationForm = ({url,setLogined,setLoginUser}) => {
           axios.post("http://localhost:9002/register",user).then(res=>{           
             setLogined(true);
             if(res.data.message.includes('Successfully Registered')){
-                if(url){
+                if(url||localStorage.getItem('cvurl')){
                     alert(res.data.message);
                     localStorage.setItem('logined',true);
                     setLoginUser(true);
-                    navigate(`${url}`);
+                    navigate(`${localStorage.getItem('cvurl')}`);
                     }else{
                         console.log(" write code for the sample CV ");
 
