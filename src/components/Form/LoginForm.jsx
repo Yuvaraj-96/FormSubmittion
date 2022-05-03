@@ -5,7 +5,20 @@ import {useNavigate} from 'react-router-dom';
 
 
 //setUrl={setUrl} setLogined={setLogined} setLoginUser={setLoginUser}
-const LoginForm = ({setUrl,setLogined,setLoginUser}) => {
+const LoginForm = ({url,setLogined,setLoginUser}) => {
+
+
+//     const pathname = window.location.pathname 
+//   //setUrl(pathname);
+//   pathname.slice("/");
+//   console.log(" in App.js pathname : "+pathname);
+//   console.log("pathname.slice(/); : "+pathname.split("/"));
+//   const arryvalue=pathname.split("/");
+// //   console.log("url ; : "+url);
+
+    
+
+
     const [user, setUser] = useState({
         email:"",password:""
       })
@@ -14,10 +27,24 @@ const LoginForm = ({setUrl,setLogined,setLoginUser}) => {
         const{email,password} = user;
         if(email && password){
           await axios.post("http://localhost:9002/login",user).then(res=>{
+           // alert(res.data.message); 
+
+           if(res.data.message.includes("User not register already")||res.data.message.includes("Password is incorrect")) {
+            alert(res.data.message);            
+           }else{
             alert(res.data.message); 
-            navigate(`/user/${setUrl}`);
+            localStorage.setItem('logined',true);
             setLogined(true);
             setLoginUser(res.data.user.name);
+            if(url){
+            navigate(`${url}`);
+            }else{
+                console.log(" write code for the sample CV ");
+                // write code for the sample CV
+            }
+           }
+            
+            
              //navigate("/Homepage");
           })
           //setLoginUser(user);
@@ -28,9 +55,15 @@ const LoginForm = ({setUrl,setLogined,setLoginUser}) => {
       }
       const handelChange=e=>{
         const { name, value} = e.target;
-        setUser({
-          ...user,[name]: value
-        })
+        if(name==="email"){
+            setUser({...user,[name]: value.toLowerCase()})
+
+        }else{
+            setUser({
+                ...user,[name]: value
+              })
+        }
+        
       }
      
   return (

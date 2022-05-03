@@ -5,7 +5,7 @@ import {useNavigate} from 'react-router-dom';
 
 
 
-const RegistrationForm = ({setUrl,setLogined,setLoginUser}) => {
+const RegistrationForm = ({url,setLogined,setLoginUser}) => {
     const [user, setUser] = useState({
         fullname:"", name:"",email:"",phoneNumber:"",password:"",reEnterPassword:""
       });
@@ -15,12 +15,25 @@ const RegistrationForm = ({setUrl,setLogined,setLoginUser}) => {
       const registerpost=()=>{
         const{fullname,name,email,phoneNumber,password,reEnterPassword} = user;
         if(name && email && password && fullname&& phoneNumber&& password&&(password===reEnterPassword)){
-          axios.post("http://localhost:9002/register",user).then(res=>{
-            alert(res.data.message);
+
+          axios.post("http://localhost:9002/register",user).then(res=>{           
             setLogined(true);
-            if(setUrl){
-                navigate(`${setUrl}`);
+            if(res.data.message.includes('Successfully Registered')){
+                if(url){
+                    alert(res.data.message);
+                    localStorage.setItem('logined',true);
+                    setLoginUser(true);
+                    navigate(`${url}`);
+                    }else{
+                        console.log(" write code for the sample CV ");
+
+                        // write code for the sample CV
+
+                    }
+                                             
             }else{
+                alert(res.data.message); 
+                navigate(`/`);
                 
             }
             

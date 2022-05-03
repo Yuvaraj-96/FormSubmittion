@@ -35,6 +35,10 @@
     height: 2rem;
     margin-top: 1rem;
 }
+.s-wrap{
+inline-size: 450px;
+overflow-wrap: break-word;
+}
 
 .p-button{
     padding: 0px !important;
@@ -75,4 +79,8 @@
     .cards>*{
         position: static;
     }
+    .s-wrap{
+        inline-size: 350px;
+        overflow-wrap: break-word;
+        }
 }

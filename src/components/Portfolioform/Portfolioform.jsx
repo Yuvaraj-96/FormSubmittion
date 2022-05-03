@@ -5,11 +5,13 @@ import {useNavigate} from 'react-router-dom';
 
 
 const Portfolioform = ({setCvetails}) => {
- 
+    
+    const today = new Date(Date.now());
+    const todaydate=today.toUTCString();
     const[details, setDetails] = useState({
-        username:"",fullname:"",jobdescription:"",area1:"",area2:"",service:"",serviceareatitle1:"",
-        serviceareadesc1:"",serviceareatitle2:"",serviceareadesc2:"",serviceareatitle3:"",
-        serviceareadesc3:"",gitlink:"",cvlink:"",linkedinlink:"",instalink:"",yearexperiance:"",projectcomplited:"",companies:"", permition:false
+        username:"",fullname:"",jobdescription:"",area1:"",area2:"",service:"",serviceareatitle1:"",date:todaydate,
+        serviceareadesc1:"",serviceareatitle2:"",serviceareadesc2:"",serviceareatitle3:"",workdescription:"",
+        serviceareadesc3:"",gitlink:"",cvlink:"",linkedinlink:"",instalink:"",yearexperiance:"",projectcomplited:"",companies:"", permition:false,currentyearexperiance:""
     })
     const navigate= useNavigate();
 
@@ -81,6 +83,7 @@ const Portfolioform = ({setCvetails}) => {
   return (
     // <form action="#">
       <div className="body">
+          <button class='special-button' onClick={()=>window.history.go(-1)}>&#8592;</button>
       <div className="wrapper">
         <div className="title">Registration Form</div>
         
@@ -93,6 +96,14 @@ const Portfolioform = ({setCvetails}) => {
             <div className="input_field">
                 <label htmlFor="">Full Name</label>
                 <input name="fullname"type="text" className="pd-input" placeholder="Full Name"  required onChange={handelChange} />
+            </div>
+            <div className="input_field">
+                <label htmlFor="">Mobile Number</label>
+                <input name="mobile"type="text" className="pd-input" placeholder="Mobile Number"  required onChange={handelChange} />
+            </div>
+            <div className="input_field">
+                <label htmlFor="">Email ID</label>
+                <input name="email"type="text" className="pd-input" placeholder="Email ID"  required onChange={handelChange} />
             </div>
             <div className="input_field">
                 <label htmlFor="">Job description</label>
@@ -151,8 +162,12 @@ const Portfolioform = ({setCvetails}) => {
                 <input type="text" className="pd-input" name="linkedinlink" id="" placeholder="LinkedIn Profile Link" onChange={handelChange}/>
             </div>
             <div className="input_field">
-                <label htmlFor="">Year of Experience</label>
-                <input type="text" className="pd-input" name="yearexperiance" id="" placeholder="Year of Experience" onChange={handelChange}/>
+                <label htmlFor="">Total Years of Experience</label>
+                <input type="text" className="pd-input" name="yearexperiance" id="" placeholder="Total Years of Experience" onChange={handelChange}/>
+            </div>
+            <div className="input_field">
+                <label htmlFor="">Current Position Years of Experience</label>
+                <input type="text" className="pd-input" name="currentyearexperiance" id="" placeholder="Current Position Years of Experience" onChange={handelChange}/>
             </div>
             <div className="input_field">
                 <label htmlFor="">Project completed </label>
@@ -161,6 +176,10 @@ const Portfolioform = ({setCvetails}) => {
             <div className="input_field">
                 <label htmlFor="">Previously worked Companies </label>
                 <input type="text" className="pd-input" name="companies" id="" placeholder="Previously worked Companies" onChange={handelChange}/>
+            </div>
+            <div className="input_field">
+                <label htmlFor="">Work Experiance Description</label>
+                <textarea name="workdescription" cols="30" rows="10" placeholder=' Like I have worked in 3 React Project with Redux' className="textarea" onChange={handelChange}></textarea>               
             </div>
             <div className="input_field">
                 <label htmlFor="">Portfolio Link </label>

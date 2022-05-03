@@ -1,22 +1,22 @@
 import React from 'react';
 import './Experience.css';
 
-const Experience = () => {
+const Experience = ({portfoliodata}) => {
   return (
    <div className="experience" id='Experience'>
        <div className="achievement">
-           <div className="circle">3+</div> 
-           <span>Years</span>
+           <div className="circle">{portfoliodata.yearexperiance?portfoliodata.yearexperiance:"3+"}</div> 
+           <span>Total Years</span>
            <span>Experience</span>
        </div>
        <div className="achievement">
-           <div className="circle">10+</div> 
+           <div className="circle">{portfoliodata.projectcomplited?portfoliodata.projectcomplited:"10+"}</div> 
            <span>Completed</span>
            <span>Projects</span>
        </div>
        <div className="achievement">
-           <div className="circle">2+</div> 
-           <span>React</span>
+           <div className="circle">{portfoliodata.currentyearexperiance?portfoliodata.currentyearexperiance:"2+"}</div> 
+           <span>Current position</span>
            <span>Experience</span>
        </div>
    </div>

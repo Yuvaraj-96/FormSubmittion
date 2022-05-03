@@ -12,15 +12,21 @@ import { themeContext } from '../../Context';
 import { motion } from 'framer-motion';
 
 
-const Works = () => {
+const Works = ({portfoliodata}) => {
     const theme = useContext(themeContext);
     const darkMode = theme.state.darkMode;
+    // let workdescriptionarray= portfoliodata.workdescription?portfoliodata.workdescription.slice("."):[" "," "];
+//    let workdescriptionarray=portfoliodata.workdescription.slice(".");
+//    workdescriptionarray= workdescriptionarray?workdescriptionarray:[" "," "]
+   
   return (
+   
     <div className="works">
         <div className="awesome">
         <span style={{color:darkMode?'white':''}}> Works for All these</span>
         <span>Brands & clients</span>
-        <span>Lorem <br/>ispum<br/>ispum</span>
+        <span>{portfoliodata.workdescription}</span>
+        {/* {workdescriptionarray?workdescriptionarray.map((value)=><span>{value} <br/></span>):" "} */}
         <button className='button s-button'>Hire Me</button>
         <div className="blur s-blur1" style={{background:'#ABF1FF94'}}>
         </div>

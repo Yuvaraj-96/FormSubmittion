@@ -23,6 +23,9 @@
     display: flex;
     gap:2rem;
 }
+.footer span{
+    padding-top: 3rem !important;
+}
 
 @media (max-width: 500px){
     .f-content{

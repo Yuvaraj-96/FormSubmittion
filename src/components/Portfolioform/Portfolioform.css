@@ -197,6 +197,18 @@
 .wrapper .form .inputfield:last-child{
   margin-bottom: 0;
 }
+.special-button {
+  width: 3rem;
+  height: 3rem;
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.125);
+  border-radius: 50%;
+  background: linear-gradient(315deg, #f9ea8f 0%, #aff1da 74%);
+  position: fixed;
+  left: 1rem;
+  top: 2rem;
+  background-color: #f9ea8f;
+/* background-image: linear-gradient(315deg, #f9ea8f 0%, #aff1da 74%); */
+}
 
 @media (max-width:420px) {
   .wrapper .form .inputfield{

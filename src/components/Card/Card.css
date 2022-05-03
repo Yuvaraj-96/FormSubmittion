@@ -13,6 +13,7 @@
     border-radius: 20px;
     padding: 0px 26px 2rem 26px;
     box-sizing: content-box !important;
+    transition: all 0.5s ease-out;
 
 }
 
@@ -35,12 +36,22 @@
     font-size:16px;
     color:#5290fd;
 }
+.Card:hover{
+    transform: scale(1.1)
+    /* transition: s; */
+}
 
 @media (max-width: 500px){
 
     .Card{
-        width:300px;
+        width:250px;
+        transition: all 0.5s ease-out;
+
         
+    }
+    .Card:hover{
+        transform: scale(1.1)
+        /* transition: s; */
     }
 
 }
