@@ -31,6 +31,7 @@
     .f-content{
        transform: scale(.5);
        cursor: pointer;
+       padding-bottom: 4rem !important;
     }
     
 

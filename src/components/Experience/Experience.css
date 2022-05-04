@@ -46,7 +46,7 @@
 
 @media (max-width: 500px){
 .experience{
-
     gap:2rem;
+    padding-top: 3rem !important;
 }
 }
