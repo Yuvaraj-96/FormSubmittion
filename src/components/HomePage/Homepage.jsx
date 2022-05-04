@@ -58,7 +58,7 @@ const Homepage = ({setLogined,cvdetails}) => {
         }
       })
 
-  },[username]);
+  },[username,navigate]);
 
 
   // console.log("portfoliodata : "+ portfoliodata.username)
