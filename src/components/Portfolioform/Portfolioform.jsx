@@ -22,7 +22,7 @@ const Portfolioform = ({setCvetails}) => {
 
             setCvetails({...details});
        
-            axios.post(`http://localhost:9002/setuserdata`,details).then(res=>{
+            axios.post(`https://portfoliobn.herokuapp.com/setuserdata`,details).then(res=>{
                 alert(res.data.message);
                 navigate(`/user/${details.username}`);
                // navigate(`/user/${details.name}`);

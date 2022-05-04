@@ -16,7 +16,7 @@ const RegistrationForm = ({url,setLogined,setLoginUser}) => {
         const{fullname,name,email,phoneNumber,password,reEnterPassword} = user;
         if(name && email && password && fullname&& phoneNumber&& password&&(password===reEnterPassword)){
 
-          axios.post("http://localhost:9002/register",user).then(res=>{           
+          axios.post("https://portfoliobn.herokuapp.com/register",user).then(res=>{           
             setLogined(true);
             if(res.data.message.includes('Successfully Registered')){
                 if(url||localStorage.getItem('cvurl')){

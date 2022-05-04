@@ -26,7 +26,7 @@ const LoginForm = ({url,setLogined,setLoginUser}) => {
       const loginpost=async()=>{
         const{email,password} = user;
         if(email && password){
-          await axios.post("http://localhost:9002/login",user).then(res=>{
+          await axios.post("https://portfoliobn.herokuapp.com/login",user).then(res=>{
            // alert(res.data.message); 
 
            if(res.data.message.includes("User not register already")||res.data.message.includes("Password is incorrect")) {
