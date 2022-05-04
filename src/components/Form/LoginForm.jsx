@@ -42,6 +42,8 @@ const LoginForm = ({url,setLogined,setLoginUser}) => {
             }else{
                 console.log(" write code for the sample CV ");
                 // write code for the sample CV
+                localStorage.setItem('sampleCV',"yuvaraj");
+                navigate(`/user/yuvaraj`);
             }
            }
             

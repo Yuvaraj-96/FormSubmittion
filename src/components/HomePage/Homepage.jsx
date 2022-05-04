@@ -31,12 +31,20 @@ const Homepage = ({setLogined,cvdetails}) => {
   username=arryvalue[2]||cvdetails.username
   console.log("arryvalue[1]  : "+arryvalue[2]);
   console.log("username[1]  : "+username);
+  if(!username)
+  {
+    username= localStorage.getItem('sampleCV')
+  }else{
+    localStorage.removeItem('sampleCV');
+  }
+  
   
 
   const [portfoliodata, setPortfoliodata] = useState({username:"",fullname:"",jobdescription:"",area1:"",area2:"",service:"",serviceareatitle1:"",
   serviceareadesc1:"",serviceareatitle2:"",serviceareadesc2:"",serviceareatitle3:"",workdescription:"",mobile:"",email:"",
   serviceareadesc3:"",gitlink:"",cvlink:"",linkedinlink:"",instalink:"",yearexperiance:"",projectcomplited:"",companies:"",permition:false,currentyearexperiance:""})
 
+  
   setLogined(true);
   const navigate= useNavigate();
 
