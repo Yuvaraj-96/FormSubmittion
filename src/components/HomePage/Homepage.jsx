@@ -47,8 +47,10 @@ const Homepage = ({setLogined,cvdetails}) => {
   
   setLogined(true);
   const navigate= useNavigate();
+  
 
   useEffect(() => {
+   
     axios.post("https://portfoliobn.herokuapp.com/getuserdatas",{username:username}).then(res=>{
       console.log('page is fully loaded');
        console.log(res.data);
